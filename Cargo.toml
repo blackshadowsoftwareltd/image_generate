@@ -1,0 +1,10 @@
+[package]
+name = "img_overlay"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+image = "0.25.1"
+rusttype = "0.9.3"
