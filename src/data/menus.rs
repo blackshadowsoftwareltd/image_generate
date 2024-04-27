@@ -1,56 +1,57 @@
-use crate::structs::menu::{Menu, MenuItem};
+use crate::structs::menu::{Category, MenuCategory, Product};
 
-pub fn menu_list() -> Vec<Menu> {
+pub fn menu_category() -> MenuCategory {
     let mut menus = Vec::new();
-    let menu1 = Menu {
-        id: "1".to_string(),
-        name: "Breakfast".to_string(),
-        items: vec![
-            MenuItem {
-                id: "1".to_string(),
-                name: "Eggs".to_string(),
-                price: 5.99,
-                description: "Two eggs any style".to_string(),
+    let menu1 = Category {
+        id: Some("1".to_string()),
+        name: Some("Breakfast".to_string()),
+        products: Some(vec![
+            Product {
+                id: Some("1".to_string()),
+                name: Some("Eggs".to_string()),
+                price: Some(5.99),
             },
-            MenuItem {
-                id: "2".to_string(),
-                name: "Pancakes".to_string(),
-                price: 6.99,
-                description: "Three pancakes with syrup".to_string(),
+            Product {
+                id: Some("2".to_string()),
+                name: Some("Pancakes".to_string()),
+                price: Some(6.99),
             },
-            MenuItem {
-                id: "3".to_string(),
-                name: "Oatmeal".to_string(),
-                price: 4.99,
-                description: "Bowl of oatmeal".to_string(),
+            Product {
+                id: Some("3".to_string()),
+                name: Some("Oatmeal".to_string()),
+                price: Some(4.99),
             },
-        ],
+        ]),
     };
-    let menu2 = Menu {
-        id: "2".to_string(),
-        name: "Lunch".to_string(),
-        items: vec![
-            MenuItem {
-                id: "4".to_string(),
-                name: "Burger".to_string(),
-                price: 7.99,
-                description: "Cheeseburger with fries".to_string(),
+    let menu2 = Category {
+        id: Some("2".to_string()),
+        name: Some("Lunch".to_string()),
+        products: Some(vec![
+            Product {
+                id: Some("4".to_string()),
+                name: Some("Burger".to_string()),
+                price: Some(7.99),
             },
-            MenuItem {
-                id: "5".to_string(),
-                name: "Salad".to_string(),
-                price: 8.99,
-                description: "Garden salad with dressing".to_string(),
+            Product {
+                id: Some("5".to_string()),
+                name: Some("Salad".to_string()),
+                price: Some(8.99),
             },
-            MenuItem {
-                id: "6".to_string(),
-                name: "Soup".to_string(),
-                price: 6.99,
-                description: "Bowl of soup".to_string(),
+            Product {
+                id: Some("6".to_string()),
+                name: Some("Soup".to_string()),
+                price: Some(6.99),
             },
-        ],
+        ]),
     };
     menus.push(menu1);
     menus.push(menu2);
-    menus
+
+    MenuCategory {
+        background: Some("assets/pxfuel.jpg".to_string()),
+        width: Some(320.33),
+        height: Some(660.33),
+        currency: Some("$".to_string()),
+        categories: Some(menus),
+    }
 }
