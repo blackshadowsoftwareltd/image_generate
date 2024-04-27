@@ -55,14 +55,15 @@ pub fn draw_right_align(
     let text_width = text_glyph
         .iter()
         .map(|x| x.position().x)
-        .collect::<Vec<f32>>()
-        .iter()
-        .fold(0.0, |v, x| v + x);
-    println!("r w: {:?}", text_width);
+        .collect::<Vec<f32>>();
+    println!("->>: {:?}", text_width);
+
+    let text_width = text_width.last().unwrap();
+    println!("<>: {:?}", text_width);
 
     let v_metrics = font.v_metrics(scale);
     let offset = rusttype::point(
-        x as f32 + (img_width) as f32 - text_width,
+        -x as f32 + (img_width) as f32 - text_width - 10.0,
         y as f32 + v_metrics.ascent,
     );
     println!("r: {:?}", scale);
