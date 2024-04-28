@@ -6,11 +6,16 @@ use rusttype::{Font, Scale};
 
 use crate::{create_blank_image::blank_image, data::menus::menu_category};
 
-use super::draw::{draw_left_align, draw_right_align};
+use super::{
+    category::category_image,
+    draw::{draw_category_image, draw_left_align, draw_right_align},
+};
 
 pub fn create_menu(target: &PathBuf) -> Result<()> {
     let menu = menu_category();
     let mut img = blank_image(menu.width.unwrap() as u32, menu.height.unwrap() as u32).unwrap();
+
+    let mut category_img = category_image()?;
 
     // Load a font
     let menu_font_src = PathBuf::from("assets/Exo-Bold.otf");
@@ -38,7 +43,7 @@ pub fn create_menu(target: &PathBuf) -> Result<()> {
     // Render each menu and its items onto the image
     for category in menu.categories.unwrap() {
         // Render menu name
-        draw_left_align(
+        let pxy = draw_left_align(
             &mut img,
             x,
             y,
@@ -50,6 +55,8 @@ pub fn create_menu(target: &PathBuf) -> Result<()> {
                 .unwrap_or_else(|| "Name not found".to_string())
                 .as_str(),
         );
+        draw_category_image(&mut category_img, &mut img, pxy.0, pxy.1); // Draw category image
+
         y += 30; // Increase y position for next menu items
 
         // Render each item in the menu

@@ -1,5 +1,7 @@
+pub mod constants;
 pub mod create_blank_image;
 pub mod data;
+pub mod file;
 pub mod generators;
 pub mod structs;
 
